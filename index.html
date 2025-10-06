@@ -7,8 +7,15 @@
     <!-- Daisy UI CDN -->
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>
+    .active{
+    background: #FE1F3D;
+    color:white;
+}
+</style>
 </head>
 <body>
+    <!-- Step : 1 -->
     <header>
         <nav class="w-11/12 mx-auto flex justify-between border-b-2 py-5 border-[#17171720] ">
             <div class="logo">
@@ -22,7 +29,7 @@
             </div>
         </nav>
     </header>
-
+                <!-- Step : 2 -->
     <nav id="category-container" class="flex py-5 justify-center gap-5">
         <div >
             <button onclick="loadVideos()"
@@ -30,7 +37,7 @@
         </div>
       
     </nav>
-
+   <!-- Step : 3, 4 -->
     <section class="w-11/12 mx-auto grid grid-cols-4 gap-5" id="video-container">
 
             <!-- <div class="card bg-base-100  ">
@@ -55,6 +62,12 @@
     </div>
   </div>
 </div> -->
+<!-- option : 5 Handle empty Category -->
+<div
+ class=" py-20 col-span-full flex flex-col items-center text-center">
+    <img class="w-[120px]" src="./assets/Icon.png" alt="">
+    <h2 class="text-2xl font-bold">Oops!! Sorry, There is no content here!</h2>
+</div>
     </section>
 
     <script src="scripts/index.js"></script>
