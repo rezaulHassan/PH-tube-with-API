@@ -1,3 +1,11 @@
+// Step : 6 Remove active class
+function removeActiveClass(){
+    const activeButtons = document.getElementsByClassName("active");
+    for(let btn of activeButtons){
+        btn.classList.remove("active");
+    }
+    console.log(activeButtons);
+}
 // Step : 1
 function loadCategories(){
     // 1- fetch the data
@@ -6,14 +14,18 @@ function loadCategories(){
     .then((res) => res.json())
     // 3- send data to display
     .then((data) => displayCategories(data.categories));
-};
+}
 
 // Step : 3
 function loadVideos(){
     fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
     .then(Response => Response.json())
-    .then(data => displayVideos(data.videos));
-};
+    .then((data) =>{
+        removeActiveClass();
+        document.getElementById("btn-all").classList.add("active");
+     displayVideos(data.videos);
+    }); 
+}
 
 // Step : 5
 const loadCategoryVideos = (id) =>{
@@ -23,13 +35,13 @@ const loadCategoryVideos = (id) =>{
     fetch(url)
     .then((res) => res.json())
     .then((data) =>{
+        removeActiveClass();
         const clickedButton = document.getElementById(`btn-${id}`);
         clickedButton.classList.add("active");
-        console.log(clickedButton);
-
+        // console.log(clickedButton);
         displayVideos(data.category);
     });
-};
+}
 
 // Step : 2
 function displayCategories(categories) {
@@ -48,7 +60,7 @@ function displayCategories(categories) {
         // Append the Element
         categoryContainer.append(categoryDiv);
     }
-};
+}
 
 // Step : 4
    const displayVideos =(videos) =>{
@@ -100,7 +112,7 @@ videos.forEach((video)=> {
     
 });
 
-};
+}
 
 loadCategories();
 // loadVideos();
